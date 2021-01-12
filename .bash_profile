@@ -15,7 +15,6 @@ source .bashrc
     alias vrc="vim $HOME/.vimrc"
     alias cdh="cd $HOME"
     alias vbp="vim $HOME/.bash_profile"
-    alias sbp="source $HOME/.bash_profile"
     alias nb="newsboat"
     ## notes
     alias scratch="notes scratch"
@@ -30,11 +29,17 @@ source .bashrc
     alias ga="git add ."
     alias gp="git push"
     alias gpl="git pull"
+    alias gs="git status"
    
 # MISCELLANEOUS
     set -o vi # set readline editor to vi
 
 # FUNCTIONS
+    ## shortcuts
+    sbp() { 
+        cdh
+        source .bash_profile
+    }
     ## git
     gpsu() {
         branch=$(git branch --show-current)
@@ -52,8 +57,5 @@ source .bashrc
         git remote add origin git@github.com:max-monty/$base.git
         git push -u origin master
     }
-    gc() { 
-        message="\"$@\""
-        git commit -am "$*" 
-    }
+    gc() { git commit -am "$*"; }
 

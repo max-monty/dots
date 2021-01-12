@@ -54,6 +54,6 @@ source .bashrc
     }
     gc() { 
         message="\"$@\""
-        echo git commit -am '"'$@'"' 
+        git commit -am "$*" 
     }
 

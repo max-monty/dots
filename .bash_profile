@@ -53,8 +53,7 @@ source .bashrc
         git push -u origin master
     }
     gc() { 
-        message="\""$@"\""
-        echo $message
-        echo git commit -am $message 
+        message="\"$@\""
+        echo git commit -am '"'$@'"' 
     }
 

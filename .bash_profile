@@ -1,8 +1,9 @@
 source .bashrc
 
 # ENVIORNMENT VARIABLES 
-    export PATH="$PATH:$HOME/packages/flutter/bin"
-    export NOTESPATH="/Users/maxmontgomery/documents/notes"
+    export PATH="$PATH:$HOME/packages/flutter/bin:/Library/Frameworks/Python.framework/Versions/3.9/lib/python3.9/site-packages:/Library/Frameworks/Python.framework/Versions/3.9/bin:$HOME/.vim/plugged/vim-iced/bin"
+    
+    export NOTESPATH="/Users/maxmontgomery/docs/notes"
     export NOTESCRIPT="/Users/maxmontgomery/projects/notes"
     export EDITOR="vim"
     
@@ -25,11 +26,25 @@ source .bashrc
     alias search="notes search"
     alias pd="notes push -d"
     alias ppd="notes pop -d"
+    alias proj="notes proj"
+    alias projps="notes proj push"
+    alias projpp="notes proj pop"
+    alias ped="notes pop everyday"
     ## git
     alias ga="git add ."
     alias gp="git push"
     alias gpl="git pull"
     alias gs="git status"
+    alias gch="git checkout"
+    ## lein
+    alias lnc="lein new compojure" # server
+    alias lrs="lein ring server-headless" # start server
+    ## heroku
+    alias hscale="heroku ps:scale web=1"
+    alias ho="heroku open"
+    alias hp="git push heroku master"
+    ### misc
+    alias sleepy="pmset sleepnow"
    
 # MISCELLANEOUS
     set -o vi # set readline editor to vi

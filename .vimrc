@@ -2,30 +2,58 @@
 call plug#begin()
 Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'crusoexia/vim-javascript-lib'
 Plug 'crusoexia/vim-monokai'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'pangloss/vim-javascript'
+Plug 'crusoexia/vim-javascript-lib'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim' , { 'branch' : 'release' }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'mustache/vim-mustache-handlebars'
+Plug 'guns/vim-sexp',    {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
+Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
 call plug#end()
 
 colorscheme monokai
 
 " settings
-set tabstop=4
-set shiftwidth=4
-set expandtab
 set linebreak
-set number
 set backspace=indent,eol,start
+
+func! CodeMode()
+  set tabstop=2
+  set shiftwidth=2
+  set expandtab
+  set formatoptions=cql
+  set number
+  set ruler
+  set laststatus=1
+  set nospell
+endfu
+com! Code call CodeMode()
+call CodeMode()
+
+func! ProseMode()
+ 	map k gk
+	map j gj
+  set textwidth=100
+  set formatoptions=aw2tq
+  set laststatus=0
+  set nonumber
+  set spell spelllang=en_us
+  nnoremap \s eas<C-X><C-S>
+endfu
+com! Prose call ProseMode()
+autocmd FileType markdown call ProseMode()
 
 " on start
 " autocmd vimenter * NERDTree
 autocmd BufEnter * :syntax sync fromstart
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+let g:iced_enable_default_key_mappings = v:true
+nnoremap <leader>ev :IcedEval<space>
 
 " key mappings
 map <C-n> :NERDTreeToggle<CR>
